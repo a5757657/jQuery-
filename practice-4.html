@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container pt-5 d-flex">
+      <form class="col-6">
+        <div class="form-group">
+          <label for="exampleInputEmail1">user name</label>
+          <input type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <button type="button" class="auto btn btn-primary">Auto Input</button>
+        <button type="button" class="sub btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".auto").click(function () {
+          $("input").eq(0).val("test");
+          $("input").eq(1).val("test@test.com");
+          $("input").eq(2).val("test");
+        });
+
+        $(".sub").click(function () {
+          $("input").val("");
+        });
+      });
+    </script>
+  </body>
+</html>
