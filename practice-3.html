@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .yy{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .aaa {
+        border: 5px solid red;
+      }
+      img {
+        margin: 20px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="yy">
+      <img src="https://picsum.photos/200/200/?random=1" />
+      <img src="https://picsum.photos/200/200/?random=2" />
+      <img src="https://picsum.photos/200/200/?random=3" />
+      <img src="https://picsum.photos/200/200/?random=4" />
+      <img src="https://picsum.photos/200/200/?random=5" />
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $("img").click(function () {
+          if ($(event.target)) {
+            $(event.target).addClass("aaa");
+            $(event.target).siblings().removeClass("aaa");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
