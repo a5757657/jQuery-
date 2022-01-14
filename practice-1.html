@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>打勾tr要變色</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <style>
+      tr {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <table>
+          <tr>
+            <td><input type="checkbox" name="" id="" class="input" /></td>
+            <td>1111</td>
+            <td>1111</td>
+            <td>1111</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="" id="" class="input" /></td>
+            <td>1111</td>
+            <td>1111</td>
+            <td>1111</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="" id="" class="input" /></td>
+            <td>1111</td>
+            <td>1111</td>
+            <td>1111</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+      //js使用target
+      document.querySelector("table").addEventListener("click", function (el) {
+        if (el.target.checked == true) {
+          el.target.closest("tr").style.background = "lightblue";
+        } else {
+          el.target.closest("tr").style.background = "white";
+        }
+      });
+
+      //jquery的版本
+      $('input[type="checkbox"]').click(function () {
+        if ($(event.target).prop("checked")) {
+          $(event.target).closest("tr").css("background-color", "lightblue");
+        } else {
+          $(event.target).closest("tr").css("background-color", "white");
+        }
+      });
+
+      //比較笨的回圈版本
+      /* let check = document.querySelectorAll("input");
+
+      check.forEach((el) => {
+        el.addEventListener("change", function () {
+          if (el.checked == true) {
+            let td = el.parentElement;
+            td = td.parentElement;
+            td.style.backgroundColor = "black";
+          } else if (el.checked == false) {
+            let td = el.parentElement;
+            td = td.parentElement;
+            td.style.backgroundColor = "white";
+          }
+        });
+      }); */
+    </script>
+  </body>
+</html>
