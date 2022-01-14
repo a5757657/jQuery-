@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        font-size: 3rem;
+        /* border: 1px solid black; */
+      }
+
+      img {
+        width: 200px;
+        border-radius: 50%;
+      }
+
+      .box1 {
+        background: linear-gradient(#4ded16, #585ab5);
+      }
+      .box2 {
+        background: linear-gradient(#16edbe, #7458b5);
+      }
+      .box3 {
+        background: linear-gradient(#16ed70, #8b58b5);
+      }
+      .box4 {
+        background: linear-gradient(#16c2ed, #a658b5);
+      }
+      .box5 {
+        background: linear-gradient(#163ded, #b558a9);
+      }
+      .box6 {
+        background: linear-gradient(#6116ed, #b5588e);
+      }
+      .box7 {
+        background: linear-gradient(#e616ed, #b5588b);
+      }
+      .box8 {
+        background: linear-gradient(#ed16a5, #b55874);
+      }
+      .box9 {
+        background: linear-gradient(#ed1670, #b55858);
+      }
+      .box10 {
+        background: linear-gradient(#ed16a5, #b55858);
+      }
+      .box11 {
+        background: linear-gradient(#ed1616, #b58a58);
+      }
+      .box12 {
+        background: linear-gradient(#ed7e16, #b59f58);
+      }
+      .box13 {
+        background: linear-gradient(#eddf16, #94b558);
+      }
+      .box14 {
+        background: linear-gradient(#4ded16, #6eb558);
+      }
+      .box15 {
+        background: linear-gradient(#d7ed16, #58b599);
+      }
+      .lightblue {
+        background: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box box1">1</div>
+      <div class="box box2">2</div>
+      <div class="box box3">3</div>
+      <div class="box box4">4</div>
+      <div class="box box5">5</div>
+      <div class="box box6">6</div>
+      <div class="box box7">7</div>
+      <div class="box box8">8</div>
+      <div class="box box9">9</div>
+      <div class="box box10">10</div>
+      <div class="box box11">11</div>
+      <div class="box box12">12</div>
+      <div class="box box13">13</div>
+      <div class="box box14">14</div>
+      <div class="box box15">15</div>
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(".box").click(function (event) {
+        //$(event.target).nextUntil("row").toggleClass("lightblue");
+        $(event.target).nextUntil("row").addClass("lightblue");
+        $(event.target).prevUntil("row").removeClass("lightblue");
+      });
+    </script>
+  </body>
+</html>
