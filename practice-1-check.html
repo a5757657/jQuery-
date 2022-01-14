@@ -84,31 +84,31 @@
 
     <script>
       //js使用target 加入行內style
-      /* document.querySelector("table").addEventListener("click", function (el) {
+     /*  document.querySelector("table").addEventListener("click", function (el) {
         if (el.target.checked == true) {
           el.target.closest("tr").style.background = "lightblue";
         } else {
-          el.target.closest("tr").style.background = "white";
+          el.target.closest("tr").style.background = "";
         }
       }); */
 
       //jquery event.target的版本 addclass
-      /* $('input[type="checkbox"]').click(function () {
+      $('table').click(function () {
         if ($(event.target).prop("checked")) {
           $(event.target).closest("tr").addClass('lightblue');
         } else {
           $(event.target).closest("tr").removeClass('lightblue');
         }
-      }); */
+      });
 
       //jquery this的版本 addclass
-      $('input[type="checkbox"]').click(function () {
+      /* $('input[type="checkbox"]').click(function () {
         if ($(this).prop("checked")) {
           $(this).closest("tr").addClass("lightblue");
         } else {
           $(this).closest("tr").removeClass("lightblue");
         }
-      });
+      }); */
 
       //比較笨的js回圈版本
       /* let check = document.querySelectorAll("input");

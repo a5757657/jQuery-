@@ -37,49 +37,79 @@
       }
 
       .box1 {
-        background: linear-gradient(#4ded16, #585ab5);
+        background-color: #4158d0;
+        background-image: linear-gradient(
+          43deg,
+          #4158d0 0%,
+          #c850c0 46%,
+          #ffcc70 100%
+        );
       }
       .box2 {
-        background: linear-gradient(#16edbe, #7458b5);
+        background-color: #0093e9;
+        background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
       }
       .box3 {
-        background: linear-gradient(#16ed70, #8b58b5);
+        background-color: #0093e9;
+        background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
       }
       .box4 {
-        background: linear-gradient(#16c2ed, #a658b5);
+        background-color: #d9afd9;
+        background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
       }
       .box5 {
-        background: linear-gradient(#163ded, #b558a9);
+        background-color: #ffdee9;
+        background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
       }
       .box6 {
-        background: linear-gradient(#6116ed, #b5588e);
+        background-color: #ffdee9;
+        background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
       }
       .box7 {
-        background: linear-gradient(#e616ed, #b5588b);
+        background-color: #3eecac;
+        background-image: linear-gradient(19deg, #3eecac 0%, #ee74e1 100%);
       }
       .box8 {
-        background: linear-gradient(#ed16a5, #b55874);
+        background-color: #fa8bff;
+        background-image: linear-gradient(
+          45deg,
+          #fa8bff 0%,
+          #2bd2ff 52%,
+          #2bff88 90%
+        );
       }
       .box9 {
-        background: linear-gradient(#ed1670, #b55858);
+        background-color: #fa8bff;
+        background-image: linear-gradient(
+          45deg,
+          #fa8bff 0%,
+          #2bd2ff 52%,
+          #2bff88 90%
+        );
       }
       .box10 {
-        background: linear-gradient(#ed16a5, #b55858);
+        background-color: #74ebd5;
+        background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
       }
       .box11 {
-        background: linear-gradient(#ed1616, #b58a58);
+        background-color: #74ebd5;
+        background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
       }
       .box12 {
-        background: linear-gradient(#ed7e16, #b59f58);
+        background-color: #74ebd5;
+        background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
       }
       .box13 {
-        background: linear-gradient(#eddf16, #94b558);
+        background-color: #74ebd5;
+        background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
       }
       .box14 {
-        background: linear-gradient(#4ded16, #6eb558);
+        background-color: #fee140;
+        background-image: linear-gradient(90deg, #fee140 0%, #fa709a 100%);
       }
       .box15 {
-        background: linear-gradient(#d7ed16, #58b599);
+        background-color: #fee140;
+        background-image: linear-gradient(90deg, #fee140 0%, #fa709a 100%);
       }
       .lightblue {
         background: lightblue;
@@ -113,6 +143,7 @@
         //$(event.target).nextUntil("row").toggleClass("lightblue");
         $(event.target).nextUntil("row").addClass("lightblue");
         $(event.target).prevUntil("row").removeClass("lightblue");
+        $(this).removeClass("lightblue");
       });
     </script>
   </body>
