@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
     <style>
-      tr {
-        border: 1px solid black;
+      .lightblue {
+        background: lightblue !important;
       }
     </style>
   </head>
@@ -83,21 +83,21 @@
     <script src="/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      //js使用target
-      document.querySelector("table").addEventListener("click", function (el) {
+      //js使用target 加入行內style
+      /* document.querySelector("table").addEventListener("click", function (el) {
         if (el.target.checked == true) {
           el.target.closest("tr").style.background = "lightblue";
         } else {
           el.target.closest("tr").style.background = "white";
         }
-      });
+      }); */
 
-      //jquery的版本
+      //jquery的版本 addclass
       $('input[type="checkbox"]').click(function () {
         if ($(event.target).prop("checked")) {
-          $(event.target).closest("tr").css("background-color", "lightblue");
+          $(event.target).closest("tr").addClass('lightblue');
         } else {
-          $(event.target).closest("tr").css("background-color", "white");
+          $(event.target).closest("tr").removeClass('lightblue');
         }
       });
 
