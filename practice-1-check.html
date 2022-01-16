@@ -92,14 +92,23 @@
         }
       }); */
 
+      //jquery this的版本 addclass
+      $('input').click(function () {
+        if ($(this).is(':checked')) {
+          $(this).closest("tr").addClass('lightblue');
+        } else {
+          $(this).closest("tr").removeClass('lightblue');
+        }
+      });
+
       //jquery event.target的版本 addclass
-      $('table').click(function () {
+      /* $('table').click(function () {
         if ($(event.target).prop("checked")) {
           $(event.target).closest("tr").addClass('lightblue');
         } else {
           $(event.target).closest("tr").removeClass('lightblue');
         }
-      });
+      }); */
 
       //jquery this的版本 addclass
       /* $('input[type="checkbox"]').click(function () {
