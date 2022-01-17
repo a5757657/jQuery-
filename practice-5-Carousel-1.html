@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>增加左右換頁按鈕</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <style>
+      .wrap {
+        width: 800px;
+        height: 500px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+      .img-wrap {
+        display: flex;
+        /* width: 700%; */
+        transition: 0.5s;
+        position: relative;
+        /* transform: translateX(0%); */
+      }
+      li img {
+        width: 100%;
+        height: 100%;
+      }
+      ul.slider-dots {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        bottom: 0;
+        width: 100%;
+      }
+      .slider-dots li {
+        width: 50px;
+        height: 10px;
+        border: 2px solid rgb(255, 255, 255);
+        cursor: pointer;
+      }
+      .slider-dots li:first-child {
+        background-color: white;
+      }
+      .left {
+        width: 100px;
+        height: 100%;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+      }
+      .left::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-left: 4px solid white;
+        border-bottom: 4px solid white;
+        position: absolute;
+        transform: rotate(45deg) translate(-50%, -50%);
+        top: 50%;
+        right: 50%;
+      }
+      .right {
+        width: 100px;
+        height: 100%;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 700px;
+      }
+      .right::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-right: 4px solid white;
+        border-top: 4px solid white;
+        position: absolute;
+        transform: rotate(45deg) translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="list-unstyled img-wrap">
+        <li><img src="https://picsum.photos/800/500/?random=1" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=2" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=3" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=4" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=5" alt="" /></li>
+      </ul>
+      <ul class="list-unstyled slider-dots">
+      </ul>
+      <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        
+
+        let dot = $("img").length;
+
+        let width = dot * 100 + "%";
+        $('.img-wrap').css('width',width)
+
+        let str = '';
+        for (let i = 0; i < dot; i++) {
+          str += `<li></li>`
+        }
+
+        $('.slider-dots').html(str);
+
+        let page = 0;
+
+
+        //抓按鈕的index去做運算
+        $(".slider-dots").children().click(function () {
+            let index = $(this).index(); //抓抓按鈕的index
+            page = $(this).index();
+            let ml = -100 * index + "%"; //算出移動距離
+            $(this).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+            $(".img-wrap").css("margin-left", ml);
+        });
+        
+        $('.right').click(function(){
+          
+          if(page < $("img").length-1){
+            page ++;
+            console.log(page);
+            let mr = page * -100 + '%';
+            $(".img-wrap").css("margin-left", mr);
+            $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+          }
+        })
+
+        $('.left').click(function(){
+          
+          if(page > 0){
+            page --;
+            console.log(page);
+            let ml = page * -100 + '%';
+            $(".img-wrap").css("margin-left", ml);
+            $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+          }
+        })
+
+        /* $('.right').click(function(){
+          
+          if(page < $("img").length-1){
+            page ++;
+            $(".img-wrap").css("margin-left", "-=800");
+            $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+          }
+        })
+
+        $('.left').click(function(){
+          
+          if(page > 0){
+            page --;
+            $(".img-wrap").css("margin-left", "+=800");
+            $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+          }
+        })
+ */
+        
+
+        //笨方法之一
+        /* $(".slider-dots").children().click(function(){
+            $(this).css('background','white').siblings().css('background','rgba(0,0,0,0)');
+        })
+        $(".slider-dots").children().eq(0).click(function(){
+            $(".img-wrap").css('margin-left','0%');
+        })
+        $(".slider-dots").children().eq(1).click(function(){
+            $(".img-wrap").css('margin-left','-100%');
+        })
+        $(".slider-dots").children().eq(2).click(function(){
+            $(".img-wrap").css('margin-left','-200%');
+        })
+        $(".slider-dots").children().eq(3).click(function(){
+            $(".img-wrap").css('margin-left','-300%');
+        })
+        $(".slider-dots").children().eq(4).click(function(){
+            $(".img-wrap").css('margin-left','-400%');
+        }) */
+      });
+    </script>
+  </body>
+</html>
