@@ -121,7 +121,9 @@
             maxTop = $(".area").height() - $(".box").width(); //容器寬度減去球的寬度
           let top = parseInt($(".box").css("top"));
 
-          switch (event.keyCode) { //抓到鍵盤的keycode
+          switch (
+            event.keyCode //抓到鍵盤的keycode
+          ) {
             case 40: //符合此keycode才會執行以下判斷式
               if (top < maxTop) {
                 $(".box").css("top", "+=50");
