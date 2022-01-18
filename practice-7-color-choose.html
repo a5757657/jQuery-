@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <style>
+      .box_container {
+        padding: 10px;
+        width: 1050px;
+        background-color: blanchedalmond;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        margin: 0 auto;
+      }
+      .box1 {
+        width: 500px;
+        height: 500px;
+        background-color: white;
+        transition: .5s;
+      }
+      .box2 {
+        width: 500px;
+        height: 500px;
+        background-color: rgb(204, 204, 204);
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+      }
+      .circle1{
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background-color: rgb(134, 255, 118);
+          cursor: pointer;
+      }
+      .circle2{
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background-color: rgb(122, 251, 255);
+          cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box_container">
+      <div class="box1"></div>
+      <div class="box2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+      </div>
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+
+        $('.box2').children().click(function(){
+            let color = $(this).css('background-color')
+            $('.box1').css('background-color', color)
+        });
+
+      });
+    </script>
+  </body>
+</html>
