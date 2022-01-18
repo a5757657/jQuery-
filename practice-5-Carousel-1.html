@@ -108,7 +108,6 @@
         <li><img src="https://picsum.photos/800/500/?random=8" alt="" /></li>
         <li><img src="https://picsum.photos/800/500/?random=9" alt="" /></li>
         <li><img src="https://picsum.photos/800/500/?random=10" alt="" /></li>
-      </ul>
       <ul class="list-unstyled slider-dots">
       </ul>
       <div class="left"></div>
@@ -145,8 +144,9 @@
         if(dot > 8) {
           $('.slider-dots').children().css('width','40px')
         }
-        
-        let wrap_w = $('.wrap').eq(0).width(); //抓圖片容器的寬度
+
+        //抓圖片容器的寬度
+        let wrap_w = $('.wrap').eq(0).width();
         
         //抓按鈕的index去做運算
         $(".slider-dots").children().click(function () {
