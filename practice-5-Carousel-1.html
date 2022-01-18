@@ -114,17 +114,22 @@
     <script>
       $(document).ready(function () {
         
-
+        //抓img標籤的數量
         let dot = $("img").length;
 
+        //用img標簽入量去運算圖片容器的寬度
         let width = dot * 100 + "%";
         $('.img-wrap').css('width',width)
 
+        //定義一個空字串
         let str = '';
+
+        //用迴圈去生出對應圖片入量的li容器
         for (let i = 0; i < dot; i++) {
           str += `<li></li>`
         }
 
+        //把li塞到ul裡面
         $('.slider-dots').html(str);
 
         let page = 0;
@@ -132,21 +137,22 @@
 
         //抓按鈕的index去做運算
         $(".slider-dots").children().click(function () {
-            let index = $(this).index(); //抓抓按鈕的index
-            page = $(this).index();
-            let ml = -100 * index + "%"; //算出移動距離
-            $(this).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
-            $(".img-wrap").css("margin-left", ml);
+          let index = $(this).index(); //抓抓按鈕的index
+          page = $(this).index();
+          let ml = -100 * index + "%"; //算出移動距離
+          $(this).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+          $(".img-wrap").css("margin-left", ml);
+          console.log(page);
         });
         
         $('.right').click(function(){
           
           if(page < $("img").length-1){
             page ++;
-            console.log(page);
             let mr = page * -100 + '%';
             $(".img-wrap").css("margin-left", mr);
             $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+            console.log(page);
           }
         })
 
@@ -154,10 +160,10 @@
           
           if(page > 0){
             page --;
-            console.log(page);
             let ml = page * -100 + '%';
             $(".img-wrap").css("margin-left", ml);
             $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+            console.log(page);
           }
         })
 
