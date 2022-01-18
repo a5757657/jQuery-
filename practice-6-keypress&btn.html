@@ -155,7 +155,7 @@
 
 
 
-        $(window).keydown(function (el) {
+        $(document).keydown(function (el) {
           let maxLeft = $(".area").width() - $(".box").width(), //容器高度減去球的寬度
             maxTop = $(".area").height() - $(".box").width(); //容器寬度減去球的寬度
           let top = parseInt($(".box").css("top"));
@@ -169,7 +169,7 @@
               }
           }
         });
-        $(window).keydown(function () {
+        $(document).keydown(function () {
           let maxLeft = $(".area").width() - $(".box").width(), //容器高度減去球的寬度
             maxTop = $(".area").height() - $(".box").width(); //容器寬度減去球的寬度
           let top = parseInt($(".box").css("top"));
@@ -181,7 +181,7 @@
               }
           }
         });
-        $(window).keydown(function () {
+        $(document).keydown(function () {
           let maxLeft = $(".area").width() - $(".box").width(), //容器高度減去球的寬度
             maxTop = $(".area").height() - $(".box").width(); //容器寬度減去球的寬度
           let left = parseInt($(".box").css("left"));
@@ -193,7 +193,7 @@
               }
           }
         });
-        $(window).keydown(function () {
+        $(document).keydown(function () {
           let maxLeft = $(".area").width() - $(".box").width(), //容器高度減去球的寬度
             maxTop = $(".area").height() - $(".box").width(); //容器寬度減去球的寬度
           let left = parseInt($(".box").css("left"));
