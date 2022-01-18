@@ -61,6 +61,8 @@
         top: 0;
         left: 0;
       }
+
+      /** 以下是左右換頁按鈕 */
       .left::before {
         content: "";
         width: 30px;
@@ -101,6 +103,11 @@
         <li><img src="https://picsum.photos/800/500/?random=3" alt="" /></li>
         <li><img src="https://picsum.photos/800/500/?random=4" alt="" /></li>
         <li><img src="https://picsum.photos/800/500/?random=5" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=6" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=7" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=8" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=9" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=10" alt="" /></li>
       </ul>
       <ul class="list-unstyled slider-dots">
       </ul>
@@ -134,14 +141,21 @@
 
         let page = 0;
 
-
+        //圖片
+        if(dot > 8) {
+          $('.slider-dots').children().css('width','40px')
+        }
+        
+        let wrap_w = $('.wrap').eq(0).width(); //抓圖片容器的寬度
+        
         //抓按鈕的index去做運算
         $(".slider-dots").children().click(function () {
           let index = $(this).index(); //抓抓按鈕的index
           page = $(this).index();
-          let ml = -100 * index + "%"; //算出移動距離
+          let ml = -(wrap_w) * index + 'px'; //算出移動距離  改用transform
+          //let ml = -100 * index + "%"; //算出移動距離  原本是用margin-left做移動
           $(this).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
-          $(".img-wrap").css("margin-left", ml);
+          $(".img-wrap").css("transform", 'translateX('+ ml +')');
           console.log(page);
         });
         
@@ -149,8 +163,9 @@
           
           if(page < $("img").length-1){
             page ++;
-            let mr = page * -100 + '%';
-            $(".img-wrap").css("margin-left", mr);
+            let mr = page * -(wrap_w) + 'px';
+            //let mr = page * -100 + '%';
+            $(".img-wrap").css("transform", 'translateX('+ mr +')');
             $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
             console.log(page);
           }
@@ -160,8 +175,9 @@
           
           if(page > 0){
             page --;
-            let ml = page * -100 + '%';
-            $(".img-wrap").css("margin-left", ml);
+            let ml = page * -(wrap_w) + 'px';
+            //let ml = page * -100 + '%';
+            $(".img-wrap").css("transform", 'translateX('+ ml +')');
             $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
             console.log(page);
           }
