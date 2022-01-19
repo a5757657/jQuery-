@@ -108,10 +108,10 @@
         <li><img src="https://picsum.photos/800/500/?random=8" alt="" /></li>
         <li><img src="https://picsum.photos/800/500/?random=9" alt="" /></li>
         <li><img src="https://picsum.photos/800/500/?random=10" alt="" /></li>
-      <ul class="list-unstyled slider-dots">
       </ul>
+      <ul class="list-unstyled slider-dots"></ul>
       <div class="left"></div>
-        <div class="right"></div>
+      <div class="right"></div>
     </div>
 
     <script src="/jquery.js"></script>
@@ -119,69 +119,81 @@
 
     <script>
       $(document).ready(function () {
-        
         //抓img標籤的數量
         let dot = $("img").length;
 
         //用img標簽入量去運算圖片容器的寬度
         let width = dot * 100 + "%";
-        $('.img-wrap').css('width',width)
+        $(".img-wrap").css("width", width);
 
         //定義一個空字串
-        let str = '';
+        let str = "";
 
         //用迴圈去生出對應圖片入量的li容器
         for (let i = 0; i < dot; i++) {
-          str += `<li></li>`
+          str += `<li></li>`;
         }
 
         //把li塞到ul裡面
-        $('.slider-dots').html(str);
+        $(".slider-dots").html(str);
 
         let page = 0;
 
         //圖片
-        if(dot > 8) {
-          $('.slider-dots').children().css('width','40px')
+        if (dot > 8) {
+          $(".slider-dots").children().css("width", "40px");
         }
 
         //抓圖片容器的寬度
-        let wrap_w = $('.wrap').eq(0).width();
-        
-        //抓按鈕的index去做運算
-        $(".slider-dots").children().click(function () {
-          let index = $(this).index(); //抓抓按鈕的index
-          page = $(this).index();
-          let ml = -(wrap_w) * index + 'px'; //算出移動距離  改用transform
-          //let ml = -100 * index + "%"; //算出移動距離  原本是用margin-left做移動
-          $(this).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
-          $(".img-wrap").css("transform", 'translateX('+ ml +')');
-          console.log(page);
-        });
-        
-        $('.right').click(function(){
-          
-          if(page < $("img").length-1){
-            page ++;
-            let mr = page * -(wrap_w) + 'px';
-            //let mr = page * -100 + '%';
-            $(".img-wrap").css("transform", 'translateX('+ mr +')');
-            $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
-            console.log(page);
-          }
-        })
+        let wrap_w = $(".wrap").eq(0).width();
 
-        $('.left').click(function(){
-          
-          if(page > 0){
-            page --;
-            let ml = page * -(wrap_w) + 'px';
-            //let ml = page * -100 + '%';
-            $(".img-wrap").css("transform", 'translateX('+ ml +')');
-            $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+        //抓按鈕的index去做運算
+        $(".slider-dots")
+          .children()
+          .click(function () {
+            let index = $(this).index(); //抓抓按鈕的index
+            page = $(this).index();
+            let ml = -wrap_w * index + "px"; //算出移動距離  改用transform
+            //let ml = -100 * index + "%"; //算出移動距離  原本是用margin-left做移動
+            $(this)
+              .css("background", "white")
+              .siblings()
+              .css("background", "rgba(0,0,0,0)");
+            $(".img-wrap").css("transform", "translateX(" + ml + ")");
+            console.log(page);
+          });
+
+        $(".right").click(function () {
+          if (page < $("img").length - 1) {
+            page++;
+            let mr = page * -wrap_w + "px";
+            //let mr = page * -100 + '%';
+            $(".img-wrap").css("transform", "translateX(" + mr + ")");
+            $(".slider-dots")
+              .children()
+              .eq(page)
+              .css("background", "white")
+              .siblings()
+              .css("background", "rgba(0,0,0,0)");
             console.log(page);
           }
-        })
+        });
+
+        $(".left").click(function () {
+          if (page > 0) {
+            page--;
+            let ml = page * -wrap_w + "px";
+            //let ml = page * -100 + '%';
+            $(".img-wrap").css("transform", "translateX(" + ml + ")");
+            $(".slider-dots")
+              .children()
+              .eq(page)
+              .css("background", "white")
+              .siblings()
+              .css("background", "rgba(0,0,0,0)");
+            console.log(page);
+          }
+        });
 
         /* $('.right').click(function(){
           
@@ -201,7 +213,6 @@
           }
         })
  */
-        
 
         //笨方法之一
         /* $(".slider-dots").children().click(function(){
