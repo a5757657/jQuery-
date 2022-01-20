@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <style>
+
+    .card{
+      height: 500px;
+    }
+    img{
+      height: 400px;
+      object-fit: cover;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center pt-3"></div>
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      const row = document.querySelector(".row");
+      let imagesLoaded = 0;
+      let totalImages = 0;
+      let photosArray = [];
+      let ready = false;
+      let str = "";
+
+      function text() {
+        photosArray.forEach((el) => {
+          str += `<div class="card col-lg-4 col-md-6 pt-2 border-0" style="width: 18rem">
+          <img src="${el["urls"]["small"]}"
+            class="card-img-top" />
+          <div class="card-body">
+            <p class="card-text">
+              ${el["user"]["name"]}
+            </p>
+          </div>
+        </div>`;
+          img();
+        });
+      }
+
+      function img() {
+        row.innerHTML = str;
+        ready = true;
+      }
+
+      window.addEventListener("scroll", () => {
+        if (
+          window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 2000
+        ) {
+          getimg();
+        }
+      });
+
+      async function getimg() {
+        try {
+          const res = await fetch("unsplash.json");
+          photosArray = await res.json();
+          text();
+          if (ready) {
+            console.log("ready");
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+      /* function getimg() {
+        fetch("unsplash.json")
+          .then((res) => {
+            const data = res.json();
+            return data;
+          })
+          .then((data) => {
+            text(data);
+            console.log('444');
+          });
+      } */
+
+      getimg();
+    </script>
+  </body>
+</html>
