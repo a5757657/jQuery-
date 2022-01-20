@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <style>
+      body {
+        margin: 0;
+        height: 300vh;
+        position: relative;
+      }
+      nav {
+        transition: 0.5s;
+      }
+      .up {
+        transform: translateY(-100%);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link disabled"
+                href="#"
+                tabindex="-1"
+                aria-disabled="true"
+                >Disabled</a
+              >
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+
+        /* let position = $(window).scrollTop();
+        $(window).scroll(function () {
+          let scroll = $(window).scrollTop();
+
+          if (scroll > position) {
+            $("nav").addClass("up");
+            position = scroll;
+            console.log("向下滑");
+          }
+          if (scroll < position) {
+            $("nav").removeClass("up");
+            position = scroll;
+            console.log("向上滑");
+          }
+        }); */
+
+        let lastScroll = 0;
+
+        $(window).scroll(function () {
+          const nowScroll = $(window).scrollTop();
+          if (nowScroll > lastScroll) {
+            $("nav").addClass("up");
+          } else {
+            $("nav").removeClass("up");
+          }
+          lastScroll = $(window).scrollTop();
+        });
+      });
+    </script>
+  </body>
+</html>

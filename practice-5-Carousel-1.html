@@ -60,6 +60,11 @@
         cursor: pointer;
         top: 0;
         left: 0;
+        transition: 1s;
+        background: transparent;
+      }
+      .left:hover{
+        background: linear-gradient(90deg,rgba(255, 255, 255, 0.473),rgba(0,0,0,0));
       }
 
       /** 以下是左右換頁按鈕 */
@@ -81,6 +86,9 @@
         cursor: pointer;
         top: 0;
         left: 700px;
+      }
+      .right:hover{
+        background: linear-gradient(-90deg,rgba(255, 255, 255, 0.473),rgba(0,0,0,0));
       }
       .right::before {
         content: "";

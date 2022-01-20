@@ -31,9 +31,9 @@
     <div class="container p-3">
       <div class="row justify-content-end">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-primary btn_s">小</button>
-          <button type="button" class="btn btn-primary btn_m active">中</button>
-          <button type="button" class="btn btn-primary btn_l">大</button>
+          <button type="button" class="btn btn-primary btn_s">S</button>
+          <button type="button" class="btn btn-primary btn_m active">M</button>
+          <button type="button" class="btn btn-primary btn_l">L</button>
         </div>
       </div>
       <h3>jQuery</h3>
@@ -52,18 +52,44 @@
 
     <script>
       $(document).ready(function () {
-        $(".btn_s").click(function () {
+
+$('.btn').click(function(){
+  if($(this).is(':contains("S")')){
+    $('p').removeClass();
+    $('p').addClass('small');
+    $('.btn').removeClass('active');
+    $(this).addClass('active');
+  }
+  if($(this).is(':contains("M")')){
+    $('p').removeClass();
+    $('p').addClass('medium');
+    $('.btn').removeClass('active');
+    $(this).addClass('active');
+  }
+  if($(this).is(':contains("L")')){
+    $('p').removeClass();
+    $('p').addClass('large');
+    $('.btn').removeClass('active');
+    $(this).addClass('active');
+  }
+})
+
+
+
+
+
+       /*  $(".btn_s").click(function () {
           $(this).addClass("active").siblings().removeClass("active");
-          $(".container").addClass("small");
+          $(".container").addClass("small").removeClass("medium").removeClass("large");
         });
         $(".btn_m").click(function () {
           $(this).addClass("active").siblings().removeClass("active");
-          $(".container").addClass("medium");
+          $(".container").addClass("medium").removeClass("small").removeClass("large");
         });
         $(".btn_l").click(function () {
           $(this).addClass("active").siblings().removeClass("active");
-          $(".container").addClass("large");
-        });
+          $(".container").addClass("large").removeClass("medium").removeClass("small");
+        }); */
       });
     </script>
   </body>
