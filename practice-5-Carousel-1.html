@@ -63,8 +63,12 @@
         transition: 1s;
         background: transparent;
       }
-      .left:hover{
-        background: linear-gradient(90deg,rgba(255, 255, 255, 0.473),rgba(0,0,0,0));
+      .left:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.473),
+          rgba(0, 0, 0, 0)
+        );
       }
 
       /** 以下是左右換頁按鈕 */
@@ -86,9 +90,14 @@
         cursor: pointer;
         top: 0;
         left: 700px;
+        transition: 0.5s;
       }
-      .right:hover{
-        background: linear-gradient(-90deg,rgba(255, 255, 255, 0.473),rgba(0,0,0,0));
+      .right:hover {
+        background: linear-gradient(
+          -90deg,
+          rgba(255, 255, 255, 0.473),
+          rgba(0, 0, 0, 0)
+        );
       }
       .right::before {
         content: "";
@@ -168,14 +177,14 @@
               .siblings()
               .css("background", "rgba(0,0,0,0)");
             $(".img-wrap").css("transform", "translateX(" + ml + ")");
-            console.log(page);
           });
 
-        $(".right").click(function () {
-          if (page < $("img").length - 1) {
+        function start() {
+          myinterval = setInterval(() => {
             page++;
-            let mr = page * -wrap_w + "px";
             //let mr = page * -100 + '%';
+            if (page >= $("img").length) page = 0;
+            let mr = page * -wrap_w + "px";
             $(".img-wrap").css("transform", "translateX(" + mr + ")");
             $(".slider-dots")
               .children()
@@ -183,64 +192,47 @@
               .css("background", "white")
               .siblings()
               .css("background", "rgba(0,0,0,0)");
-            console.log(page);
-          }
+          }, 1000);
+        }
+
+        $(".right").click(function () {
+          page++;
+          //let mr = page * -100 + '%';
+          if (page >= $("img").length) page = 0;
+          let mr = page * -wrap_w + "px";
+          $(".img-wrap").css("transform", "translateX(" + mr + ")");
+          $(".slider-dots")
+            .children()
+            .eq(page)
+            .css("background", "white")
+            .siblings()
+            .css("background", "rgba(0,0,0,0)");
         });
 
         $(".left").click(function () {
-          if (page > 0) {
-            page--;
-            let ml = page * -wrap_w + "px";
-            //let ml = page * -100 + '%';
-            $(".img-wrap").css("transform", "translateX(" + ml + ")");
-            $(".slider-dots")
-              .children()
-              .eq(page)
-              .css("background", "white")
-              .siblings()
-              .css("background", "rgba(0,0,0,0)");
-            console.log(page);
-          }
+          page--;
+          if (page <= 0) page = $("img").length - 1;
+          let ml = page * -wrap_w + "px";
+          //let ml = page * -100 + '%';
+          $(".img-wrap").css("transform", "translateX(" + ml + ")");
+          $(".slider-dots")
+            .children()
+            .eq(page)
+            .css("background", "white")
+            .siblings()
+            .css("background", "rgba(0,0,0,0)");
         });
 
-        /* $('.right').click(function(){
-          
-          if(page < $("img").length-1){
-            page ++;
-            $(".img-wrap").css("margin-left", "-=800");
-            $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
+        start();
+        $(".wrap").hover(function () {
+            clearInterval(myinterval);
+            console.log('clear');
+            
+          }, function () {
+            start();
+            console.log('start');
           }
-        })
-
-        $('.left').click(function(){
-          
-          if(page > 0){
-            page --;
-            $(".img-wrap").css("margin-left", "+=800");
-            $(".slider-dots").children().eq(page).css("background", "white").siblings().css("background", "rgba(0,0,0,0)");
-          }
-        })
- */
-
-        //笨方法之一
-        /* $(".slider-dots").children().click(function(){
-            $(this).css('background','white').siblings().css('background','rgba(0,0,0,0)');
-        })
-        $(".slider-dots").children().eq(0).click(function(){
-            $(".img-wrap").css('margin-left','0%');
-        })
-        $(".slider-dots").children().eq(1).click(function(){
-            $(".img-wrap").css('margin-left','-100%');
-        })
-        $(".slider-dots").children().eq(2).click(function(){
-            $(".img-wrap").css('margin-left','-200%');
-        })
-        $(".slider-dots").children().eq(3).click(function(){
-            $(".img-wrap").css('margin-left','-300%');
-        })
-        $(".slider-dots").children().eq(4).click(function(){
-            $(".img-wrap").css('margin-left','-400%');
-        }) */
+        );
       });
     </script>
   </body>
