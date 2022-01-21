@@ -94,7 +94,7 @@
 
       //jquery this的版本 addclass
       $('input').click(function () {
-        if ($(this).is(':checked')) {
+        if ($(this).prop("checked")) {
           $(this).closest("tr").addClass('lightblue');
         } else {
           $(this).closest("tr").removeClass('lightblue');

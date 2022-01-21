@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <style>
+      .area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .bigimg {
+        width: 800px;
+        height: 800px;
+        object-fit: cover;
+      }
+      .imgbar {
+          width: 800px;
+          padding-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .imgbar > img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        transition: .25s;
+        cursor: pointer;
+      }
+      .imgbar > img:hover{
+transform: translateY(-10px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="area">
+        <img src="#" alt="" class="bigimg" />
+        <div class="imgbar">
+          <img src="https://picsum.photos/800/800/?random=1" />
+          <img src="https://picsum.photos/800/800/?random=2" />
+          <img src="https://picsum.photos/800/800/?random=3" />
+          <img src="https://picsum.photos/800/800/?random=4" />
+          <img src="https://picsum.photos/800/800/?random=5" />
+        </div>
+      </div>
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+
+        $('.bigimg').attr('src','https://picsum.photos/800/800/?random=1')
+        $('.imgbar img').click(function(){
+           const src = $(this).attr('src');
+           $('.bigimg').attr('src',src);
+        })
+        
+      });
+    </script>
+  </body>
+</html>
