@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 網站作者 -->
+    <meta name="author" content="ChunHan Chen" />
+    <!-- 螢幕解析度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 控制搜索引擎爬蟲和索引的行為 -->
+    <meta name="robot" content="index,follow" />
+    <!-- 根據網站內容給出一個通用的年齡打分 -->
+    <meta name="rating" content="General /" />
+    <!-- 在某些情況下，描述會作為搜索結果的顯示文字 -->
+    <meta name="description" content="A description of the page" />
+    <!-- 網站名稱 -->
+    <title>增加左右換頁按鈕</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+
+    <style>
+      .wrap {
+        width: 800px;
+        height: 500px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+      .img-wrap {
+        display: flex;
+        /* width: 700%; */
+        transition: 0.5s;
+        position: relative;
+        /* transform: translateX(0%); */
+      }
+      li img {
+        width: 100%;
+        height: 100%;
+      }
+      ul.slider-dots {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        bottom: 0;
+        width: 100%;
+      }
+      .slider-dots li {
+        width: 50px;
+        height: 10px;
+        border: 2px solid rgb(255, 255, 255);
+        cursor: pointer;
+      }
+      .slider-dots li:first-child {
+        background-color: white;
+      }
+      .left {
+        width: 100px;
+        height: 100%;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        transition: 1s;
+        background: transparent;
+      }
+      .left:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.473),
+          rgba(0, 0, 0, 0)
+        );
+      }
+
+      /** 以下是左右換頁按鈕 */
+      .left::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-left: 4px solid white;
+        border-bottom: 4px solid white;
+        position: absolute;
+        transform: rotate(45deg) translate(-50%, -50%);
+        top: 50%;
+        right: 50%;
+      }
+      .right {
+        width: 100px;
+        height: 100%;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 700px;
+        transition: 0.5s;
+      }
+      .right:hover {
+        background: linear-gradient(
+          -90deg,
+          rgba(255, 255, 255, 0.473),
+          rgba(0, 0, 0, 0)
+        );
+      }
+      .right::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-right: 4px solid white;
+        border-top: 4px solid white;
+        position: absolute;
+        transform: rotate(45deg) translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="list-unstyled img-wrap">
+        <li><img src="https://picsum.photos/800/500/?random=1" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=2" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=3" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=4" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=5" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=6" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=7" alt="" /></li>
+        <li><img src="https://picsum.photos/800/500/?random=1" alt="" /></li>
+      </ul>
+      <ul class="list-unstyled slider-dots"></ul>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+
+    <script src="/jquery.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        //抓img標籤的數量
+        let dot = $("img").length - 1;
+
+        //用img標簽入量去運算圖片容器的寬度
+        let width = $("img").length * 100 + "%";
+        $(".img-wrap").css("width", width);
+
+        //定義一個空字串
+        let str = "";
+
+        //用迴圈去生出對應圖片入量的li容器
+        for (let i = 0; i < dot; i++) {
+          str += `<li></li>`;
+        }
+
+        //把li塞到ul裡面
+        $(".slider-dots").html(str);
+
+        let page = 0;
+
+        //圖片
+        if (dot > 8) {
+          $(".slider-dots").children().css("width", "40px");
+        }
+
+        //抓圖片容器的寬度
+        let wrap_w = $(".wrap").eq(0).width();
+
+        //抓按鈕的index去做運算
+        $(".slider-dots")
+          .children()
+          .click(function () {
+            let index = $(this).index(); //抓抓按鈕的index
+            page = $(this).index();
+            let ml = -wrap_w * index + "px"; //算出移動距離  改用transform
+            //let ml = -100 * index + "%"; //算出移動距離  原本是用margin-left做移動
+            $(this)
+              .css("background", "white")
+              .siblings()
+              .css("background", "rgba(0,0,0,0)");
+            $(".img-wrap").css("transform", "translateX(" + ml + ")");
+          });
+
+        function start() {
+          myinterval = setInterval(() => {
+            page++;
+            //let mr = page * -100 + '%';
+            //if (page >= $("img").length) page = 0;
+            let mr = page * -wrap_w + "px";
+            $(".img-wrap").css("transform", "translateX(" + mr + ")").css("transition", "0.5s");
+            $(".slider-dots")
+              .children()
+              .eq(page === $("img").length-1 ? 0 : page)
+              .css("background", "white")
+              .siblings()
+              .css("background", "rgba(0,0,0,0)");
+          }, 1000);
+        }
+        $(".img-wrap").on("transitionend", function () {
+          if (page >= $("img").length-1) {
+            $(".img-wrap")
+              .css("transition", "none")
+              .css("transform", "translateX(0px)");
+              page = 0;
+          }
+        });
+
+        $(".right").click(function () {
+          page++;
+          //let mr = page * -100 + '%';
+          if (page >= $("img").length) page = 0;
+          let mr = page * -wrap_w + "px";
+          $(".img-wrap").css("transform", "translateX(" + mr + ")");
+          $(".slider-dots")
+            .children()
+            .eq(page)
+            .css("background", "white")
+            .siblings()
+            .css("background", "rgba(0,0,0,0)");
+        });
+
+        $(".left").click(function () {
+          page--;
+          if (page <= 0) page = $("img").length - 1;
+          let ml = page * -wrap_w + "px";
+          //let ml = page * -100 + '%';
+          $(".img-wrap").css("transform", "translateX(" + ml + ")");
+          $(".slider-dots")
+            .children()
+            .eq(page)
+            .css("background", "white")
+            .siblings()
+            .css("background", "rgba(0,0,0,0)");
+        });
+
+        start();
+        $(".wrap").hover(
+          function () {
+            clearInterval(myinterval);
+            console.log("clear");
+          },
+          function () {
+            start();
+            console.log("start");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
